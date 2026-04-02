@@ -64,6 +64,12 @@ h2 {
     margin: 0 auto;
 }
 
+#threejs-container canvas {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
 @media (min-width: 480px) {
     #threejs-container {
         height: 400px;
