@@ -2,15 +2,18 @@
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(0x000000, 10, 50);
 
+// Get container
+const container = document.getElementById('threejs-container');
+
 // Camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
 camera.position.set(0, 5, 10);
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setClearColor(0x000000);
-document.getElementById('threejs-container').appendChild(renderer.domElement);
+container.appendChild(renderer.domElement);
 
 // Lights
 const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
@@ -135,7 +138,7 @@ animate();
 
 // Handle window resize
 window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(container.clientWidth, container.clientHeight);
 });
